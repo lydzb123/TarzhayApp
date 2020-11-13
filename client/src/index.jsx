@@ -8,18 +8,17 @@ import ProductImagesViewer from './components/ProductImagesViewer.jsx';
 const axios = require('axios');
 
 const App = () => {
-  const [productData, setProductData] = useState();
+  const [productData, setProductData] = useState({});
   //asdkjfhaslkdf
   useEffect(() => {
     getProductData();
   }, []);
 
   const getProductData = () => {
-    //TODO
-    // change url to be dynamic
-    axios.get('/api/products/0')
+    axios.get(`/api/products${window.location.pathname}`)
       .then(response => {
-        setProductData(response.data[0]);
+        console.log(response.data);
+        setProductData(response.data);
       });
   }
 

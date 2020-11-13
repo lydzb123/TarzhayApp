@@ -68,8 +68,8 @@ const generateFakeProducts = (quantity) => {
       brand: company.companyName(),
       breadcrumbs: ['Target', `${commerce.product()}s`, `${commerce.product()}s`],
       images: [],
-      reg_price: random.number({ min: 1, max: 100, precision: 0.01}),
-      discount_price: random.number({ min: 100.01, max: 1000, precision: 0.01}),
+      price_reg: random.number({ min: 1, max: 100, precision: 0.01}),
+      price_discount: random.number({ min: 100.01, max: 1000, precision: 0.01}),
       sale_end: date.future(),
       total_reviews: random.number({ min: 1, max: 200}),
       total_questions: random.number({ min: 1, max: 10}),
@@ -79,7 +79,7 @@ const generateFakeProducts = (quantity) => {
 
     // insert a random number of image urls
     for (let i = 0; i < random.number({min: 1, max: 10}); i++) {
-      fakeProduct.images.push(image.imageUrl());
+      fakeProduct.images.push(image.image());
     }
 
     fakeProducts.push(fakeProduct);
@@ -158,3 +158,4 @@ Product.deleteMany({})
 
 
 
+// console.log(image.image());
