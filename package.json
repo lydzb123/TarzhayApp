@@ -1,0 +1,40 @@
+{
+  "name": "hrsjo2-fec-product-images-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node database/seeding/seed.js",
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XMPrime/hrsjo2-FEC-product-images-viewer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XMPrime/hrsjo2-FEC-product-images-viewer/issues"
+  },
+  "homepage": "https://github.com/XMPrime/hrsjo2-FEC-product-images-viewer#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.13",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^2.2.1"
+  }
+}
