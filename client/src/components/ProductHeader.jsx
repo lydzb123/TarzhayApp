@@ -7,6 +7,7 @@ const ProductHeader = ({productData}) => {
       <div className="productHeader--breadcrumbs">
         {breadcrumbs && breadcrumbs.map(crumb => {
           return (
+            //TODO add unique key
             <span key={crumb}>
               <a href="#">{crumb}</a>
               <span>/</span>

@@ -155,7 +155,3 @@ Product.deleteMany({})
         seedUsers();
       });
   });
-
-
-
-// console.log(image.image());
