@@ -1,18 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { ProductImagesViewerStyles } from '../styles/App.styles.js';
 
 const ProductImagesViewer = ({productData}) => {
   const { images } = productData;
+  console.log(images)
+  const [mainImage, setMainImage] = useState(images[0]);
+
+
+  const changeImage = (e) => {
+    const newImage = e.target.src;
+    setMainImage(newImage);
+  }
+
   return (
-    <div className="productImagesViewer">
-      <div className="productImagesViewer--thumbnails">
-        {images && images.map(imageURL => {
-          return <img key={imageURL} src={imageURL} />
-        })}
+    <ProductImagesViewerStyles>
+      <div className="productImagesViewer">
+        <div className="productImagesViewer--thumbnails">
+          {images && images.map(imageURL => {
+            return (
+              <img
+                key={imageURL} src={imageURL} className="productImagesViewer--thumbnail"
+                onClick={changeImage}
+              />
+            );
+          })}
+        </div>
+        <div className="productImagesViewer--mainImage">
+          {images && <img src={mainImage} className="mainImage" />}
+        </div>
       </div>
-      <div className="productImagesViewer--mainImage">
-        {/* <img></img> */}
-      </div>
-    </div>
+    </ProductImagesViewerStyles>
+
   );
 }
 

@@ -8,7 +8,7 @@ import ProductImagesViewer from './components/ProductImagesViewer.jsx';
 const axios = require('axios');
 
 const App = () => {
-  const [productData, setProductData] = useState({});
+  const [productData, setProductData] = useState();
   useEffect(() => {
     getProductData();
   }, []);
@@ -24,8 +24,13 @@ const App = () => {
   return (
     <div>
       <GlobalStyle />
-      <ProductHeader productData={productData} />
-      <ProductImagesViewer productData={productData} />
+      {
+        productData &&
+          <>
+            <ProductHeader productData={productData} />
+            <ProductImagesViewer productData={productData} />
+          </>
+      }
     </div>
   )
 }
