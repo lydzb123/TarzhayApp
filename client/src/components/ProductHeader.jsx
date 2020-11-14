@@ -1,5 +1,5 @@
 import React from 'react';
-import {ProductHeaderStyles} from '../styles/App.styles.js';
+import ProductHeaderStyles from '../styles/ProductHeader.styles.js';
 
 const ProductHeader = ({productData}) => {
   const { name, brand, breadcrumbs } = productData;

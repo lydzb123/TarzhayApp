@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import { ProductImagesViewerStyles } from '../styles/App.styles.js';
+import ProductImagesViewerStyles from '../styles/ProductImagesViewer.styles.js';
 
 const ProductImagesViewer = ({productData}) => {
   const { images } = productData;
-  console.log(images)
   const [mainImage, setMainImage] = useState(images[0]);
 
 

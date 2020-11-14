@@ -68,8 +68,8 @@ const generateFakeProducts = (quantity) => {
       brand: company.companyName(),
       breadcrumbs: ['Target', `${commerce.product()}s`, `${commerce.product()}s`],
       images: [],
-      price_reg: random.number({ min: 1, max: 100, precision: 0.01}),
-      price_discount: random.number({ min: 100.01, max: 1000, precision: 0.01}),
+      price_reg: random.number({ min: 100.01, max: 1000, precision: 0.01}),
+      price_discount: random.number({ min: 1, max: 100, precision: 0.01}),
       sale_end: date.future(),
       total_reviews: random.number({ min: 1, max: 200}),
       total_questions: random.number({ min: 1, max: 10}),
@@ -78,25 +78,77 @@ const generateFakeProducts = (quantity) => {
     }
 
     // insert a random number of image urls
-    for (let i = 0; i < random.number({min: 1, max: 10}); i++) {
-      fakeProduct.images.push(image.image());
-    }
+    const s3Url = 'https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images'
+    const images = [
+      [
+        `${s3Url}/candy-land/0.webp`,
+        `${s3Url}/candy-land/1.webp`,
+        `${s3Url}/candy-land/2.webp`,
+        `${s3Url}/candy-land/3.webp`,
+        `${s3Url}/candy-land/4.webp`,
+      ],
+      [
+        `${s3Url}/cards-against-humanity/0.webp`,
+        `${s3Url}/cards-against-humanity/1.webp`,
+        `${s3Url}/cards-against-humanity/2.webp`,
+        `${s3Url}/cards-against-humanity/3.webp`,
+        `${s3Url}/cards-against-humanity/4.webp`,
+        `${s3Url}/cards-against-humanity/5.webp`,
+      ],
+      [
+        `${s3Url}/catan/0.webp`,
+        `${s3Url}/catan/1.webp`,
+        `${s3Url}/catan/2.webp`,
+        `${s3Url}/catan/3.webp`
+      ],
+      [
+        `${s3Url}/jenga/0.webp`,
+        `${s3Url}/jenga/1.webp`,
+        `${s3Url}/jenga/2.webp`,
+        `${s3Url}/jenga/3.webp`,
+        `${s3Url}/jenga/4.webp`,
+        `${s3Url}/jenga/5.webp`,
+        `${s3Url}/jenga/6.webp`,
+        `${s3Url}/jenga/7.webp`,
+      ],
+      [
+        `${s3Url}/pandemic/0.webp`,
+        `${s3Url}/pandemic/1.webp`,
+        `${s3Url}/pandemic/2.webp`,
+        `${s3Url}/pandemic/3.webp`,
+        `${s3Url}/pandemic/4.webp`,
+        `${s3Url}/pandemic/5.webp`
+      ],
+      [
+        `${s3Url}/splendor/0.webp`,
+        `${s3Url}/splendor/1.webp`,
+        `${s3Url}/splendor/2.webp`,
+        `${s3Url}/splendor/3.webp`
+      ],
+      [
+        `${s3Url}/ticket-to-ride/0.webp`,
+        `${s3Url}/ticket-to-ride/1.webp`,
+        `${s3Url}/ticket-to-ride/2.webp`,
+        `${s3Url}/ticket-to-ride/3.webp`,
+        `${s3Url}/ticket-to-ride/4.webp`,
+        `${s3Url}/ticket-to-ride/5.webp`
+      ],
+      [
+        `${s3Url}/uno/0.webp`,
+        `${s3Url}/uno/1.webp`,
+        `${s3Url}/uno/2.webp`,
+        `${s3Url}/uno/3.webp`,
+        `${s3Url}/uno/4.webp`,
+        `${s3Url}/uno/5.webp`,
+        `${s3Url}/uno/6.webp`
+      ],
+    ];
+
+    const randNum = random.number({min: 0, max: 7});
+    fakeProduct.images = images[randNum];
 
     fakeProducts.push(fakeProduct);
     counter++;
-
-    // const allUnique = fakeUsers.every(pushedUser =>
-    //   fakeProduct.email !== pushedUser.email &&
-    //   fakeProduct.username !== pushedUser.username
-    // );
-
-    // if (allUnique) {
-    //   fakeProducts.push(fakeProduct);
-    //   counter++;
-    // } else {
-    //   console.log('duplicate found!');
-    //   generateFakeProduct();
-    // }
   }
 
   while (counter < quantity) {
@@ -108,7 +160,6 @@ const generateFakeProducts = (quantity) => {
 
 const seedProducts = () => {
   let fakeProducts = generateFakeProducts(100);
-
 
   Product.insertMany(fakeProducts, (err, products) => {
     if (err) return console.log(err)
@@ -150,8 +201,10 @@ Product.deleteMany({})
     console.log('Product data deleted');
     seedProducts();
     User.deleteMany({})
-      .then(() =>{
-        console.log('User data deleted');
-        seedUsers();
-      });
+    .then(() =>{
+      console.log('User data deleted');
+      seedUsers();
+    });
   });
+
+
