@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "seed": "node database/seeding/seed.js",
-    "react-dev": "webpack --mode development -w",
+    "react-dev": "webpack -w",
     "start": "nodemon --exec babel-node server/index.js"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.2.1",
+    "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.13.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
