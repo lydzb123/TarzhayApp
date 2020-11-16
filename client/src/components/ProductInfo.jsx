@@ -1,16 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const ProductInfo = ({ productData }) => {
+const ProductInfoUnstyled = ({ className, productData }) => {
   const { price_reg, price_discount, sale_end, total_ratings, total_questions } = productData;
-  const discountAmt = price_reg - price_discount;
+  const discountAmt = (price_reg - price_discount).toFixed(2);;
   const discountPercent = Math.round(discountAmt / price_reg * 100);
 
   console.log(discountAmt, discountPercent);
   return (
-    <div className="productInfo">
+    <div className={`productInfo ${className}`}>
       <div className="productInfo--price">
         <span>{price_discount ? price_discount : price_reg}</span>
-        <span>Sale ends</span>
+        <span className="test">Sale ends</span>
         <span>{sale_end}</span>
       </div>
       <div className="productInfo--savings">
@@ -27,5 +28,12 @@ const ProductInfo = ({ productData }) => {
     </div>
   )
 };
+
+const ProductInfo = styled(ProductInfoUnstyled)`
+  color: blue;
+  span {
+    color: red;
+  }
+`;
 
 export default ProductInfo;

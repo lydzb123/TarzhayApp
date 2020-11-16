@@ -1,12 +1,12 @@
 import React from 'react';
-import ProductHeaderStyles from '../styles/ProductHeader.styles.js';
+import { Breadcrumbs, ProductName } from './style.js'
+
 
 const ProductHeader = ({productData}) => {
   const { name, brand, breadcrumbs } = productData;
   return (
-    <ProductHeaderStyles>
       <div className="productHeader">
-        <div className="productHeader--breadcrumbs">
+        <Breadcrumbs>
           {breadcrumbs && breadcrumbs.map(crumb => {
             return (
               //TODO add unique key
@@ -16,11 +16,10 @@ const ProductHeader = ({productData}) => {
               </span>
             )
           })}
-        </div>
-        <h1 className="productHeader--productName">{name}</h1>
+        </Breadcrumbs>
+        <ProductName>{name}</ProductName>
         <a href="#" className="productHeader--brandLink">{`Shop all ${brand}`}</a>
       </div>
-    </ProductHeaderStyles>
 
   )
 }

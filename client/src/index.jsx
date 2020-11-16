@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { GlobalStyle } from "./styles/App.styles.js";
-import ProductHeader from './components/ProductHeader.jsx';
-import ProductImagesViewer from './components/ProductImagesViewer.jsx';
+import ProductHeader from './components/ProductHeader/ProductHeader.jsx';
+import ProductImagesViewer from './components/ProductImagesViewer/ProductImagesViewer.jsx';
 import ProductInfo from './components/ProductInfo.jsx';
 
 
