@@ -6,6 +6,16 @@ const darkGray = 'rgb(51, 51, 51)';
 const darkGreen = 'rgb(0, 102, 1)';
 const warningOrange = 'rgb(184, 83, 0)';
 
+export const ProductOverviewContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Container = styled.div`
+    display: flex;
+    border: 1px solid red;
+`;
+
 export const GlobalStyle = createGlobalStyle`
     html {
         height: 100%;
@@ -26,6 +36,13 @@ export const GlobalStyle = createGlobalStyle`
 
     img {
         object-fit: contain;
+    }
+
+    h1 {
+        font-size: 23px;
+        line-height: 1.25;
+        margin-top: 4px;
+        margin-bottom: 4px;
     }
 
     * {

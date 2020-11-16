@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import { GlobalStyle } from "./styles/App.styles.js";
+import { ProductOverviewContainer, Container, GlobalStyle } from "./styles/App.styles.js";
 import ProductHeader from './components/ProductHeader/ProductHeader.jsx';
 import ProductImagesViewer from './components/ProductImagesViewer/ProductImagesViewer.jsx';
-import ProductInfo from './components/ProductInfo.jsx';
+import ProductInfo from './components/ProductInfo/ProductInfo.jsx';
 
 
 const axios = require('axios');
@@ -27,11 +27,13 @@ const App = () => {
       <GlobalStyle />
       {
         productData &&
-          <>
+          <ProductOverviewContainer>
             <ProductHeader productData={productData} />
-            <ProductImagesViewer productData={productData} />
-            <ProductInfo productData={productData} />
-          </>
+            <Container>
+              <ProductImagesViewer productData={productData} />
+              <ProductInfo productData={productData} />
+            </Container>
+          </ProductOverviewContainer>
       }
     </div>
   )
