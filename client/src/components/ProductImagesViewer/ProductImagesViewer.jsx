@@ -9,8 +9,7 @@ import {
   ZoomedImage
 } from './style.js';
 
-const ProductImagesViewer = ({productData}) => {
-  const { images } = productData;
+const ProductImagesViewer = ({images, changeMainImage}) => {
   const [mainImage, setMainImage] = useState(images[0]);
 
 

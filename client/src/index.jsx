@@ -11,16 +11,30 @@ const axios = require('axios');
 
 const App = () => {
   const [productData, setProductData] = useState();
+  const [carousel, setCarousel] = useState(true);
+
   useEffect(() => {
+    // document.addEventListener('click', (e) => {
+    //   console.log(e.target)
+    // })
     getProductData();
   }, []);
 
   const getProductData = () => {
     axios.get(`/api/products${window.location.pathname}`)
-      .then(response => {
-        console.log(response.data);
-        setProductData(response.data);
+      .then(({data}) => {
+        console.log(data);
+        setProductData(data);
       });
+  }
+
+  const toggleCarousel = () => {
+    setCarousel(!carousel);
+  }
+
+  const changeMainImage = (e) => {
+    const newImage = e.target.src;
+    setMainImage(newImage);
   }
 
   return (
@@ -31,10 +45,20 @@ const App = () => {
           <ProductOverviewContainer>
             <ProductHeader productData={productData} />
             <Container>
-              <ProductImagesViewer productData={productData} />
+              <ProductImagesViewer
+                images={productData.images}
+                toggleCarousel={toggleCarousel}
+                changeMainImage={changeMainImage}
+              />
               <ProductInfo productData={productData} />
             </Container>
-            {/* <CarouselModal productData={productData}/> */}
+            {
+              carousel &&
+                <CarouselModal
+                  images={productData.images}
+                  toggleCarousel={toggleCarousel}
+                />
+            }
           </ProductOverviewContainer>
 
       }

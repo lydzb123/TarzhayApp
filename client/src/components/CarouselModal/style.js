@@ -9,16 +9,25 @@ const warningOrange = 'rgb(184, 83, 0)';
 export const Container = styled.div`
   position: absolute;
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
   background-color: white;
+
+  .fa-times-circle {
+    position: fixed;
+    top: 5rem;
+    right: 5rem;
+  }
+  .fa-times-circle:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Thumbnails = styled.div`
   display: flex;
-  flex-direction: column;
   border: 1px solid red;
   flex-basis: 16.6667%;
   max-width: 16.6667%;
