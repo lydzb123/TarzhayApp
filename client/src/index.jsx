@@ -32,11 +32,6 @@ const App = () => {
     setCarousel(!carousel);
   }
 
-  const changeMainImage = (e) => {
-    const newImage = e.target.src;
-    setMainImage(newImage);
-  }
-
   return (
     <>
       <GlobalStyle />
@@ -48,7 +43,6 @@ const App = () => {
               <ProductImagesViewer
                 images={productData.images}
                 toggleCarousel={toggleCarousel}
-                changeMainImage={changeMainImage}
               />
               <ProductInfo productData={productData} />
             </Container>

@@ -22,7 +22,7 @@ export const Thumbnails = styled.div`
     padding-left: 12px;
 `;
 
-export const Thumbnail = styled.img`
+export const Thumbnail = styled.div`
     margin: 3px 2px 2px 1px;
     border: 1px solid ${lightGray};
     overflow: hidden;
@@ -31,6 +31,29 @@ export const Thumbnail = styled.img`
     height: 7.7vh;
     /* height: 106px; */
     width: 100%;
+
+    background-image: url("${props => props.imageURL}");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .shadowOverlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+    }
+`;
+
+export const DarkWrapper = styled.div`
+    background-color: black;
+    opacity: 0.4;
+    color: white;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const MainImageContainer = styled.div`

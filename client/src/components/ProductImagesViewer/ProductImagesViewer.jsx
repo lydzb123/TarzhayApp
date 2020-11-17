@@ -3,13 +3,14 @@ import {
   Container,
   Thumbnails,
   Thumbnail,
+  DarkWrapper,
   MainImageContainer,
   ZoomLens,
   MainImage,
   ZoomedImage
 } from './style.js';
 
-const ProductImagesViewer = ({images, changeMainImage}) => {
+const ProductImagesViewer = ({images}) => {
   const [mainImage, setMainImage] = useState(images[0]);
 
 
@@ -67,12 +68,14 @@ const ProductImagesViewer = ({images, changeMainImage}) => {
   return (
       <Container className="productImagesViewer">
         <Thumbnails className="productImagesViewer--thumbnails">
-          {images && images.map(imageURL => {
+          {images && images.map((imageURL, i) => {
             return (
               <Thumbnail
-                key={imageURL} src={imageURL} className="productImagesViewer--thumbnail"
+                key={imageURL} imageURL={imageURL}className="productImagesViewer--thumbnail"
                 onClick={changeImage}
-              />
+              >
+                { i === 4 && <div className="shadowOverlay">{`+${images.length - i} more`}</div> }
+              </Thumbnail>
             );
           })}
         </Thumbnails>
