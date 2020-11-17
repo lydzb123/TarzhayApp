@@ -33,12 +33,17 @@ const ProductInfo = ({ productData }) => {
         <Stars starPercent={starPercent}>
           ⭐⭐⭐⭐⭐
         </Stars>
+
         <Link href="#">{totalRatings}</Link>
         <span>﹀|</span>
         <Link href="#">4 Questions</Link>
       </Ratings>
+      <select>
+        <option>1</option>
+        <option>2</option>
+      </select>
     </ProductInfoContainer>
-  )
+  );
 };
 
 export default ProductInfo;

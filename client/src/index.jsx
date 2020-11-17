@@ -4,6 +4,7 @@ import { ProductOverviewContainer, Container, GlobalStyle } from "./styles/App.s
 import ProductHeader from './components/ProductHeader/ProductHeader.jsx';
 import ProductImagesViewer from './components/ProductImagesViewer/ProductImagesViewer.jsx';
 import ProductInfo from './components/ProductInfo/ProductInfo.jsx';
+import CarouselModal from './components/CarouselModal/CarouselModal.jsx';
 
 
 const axios = require('axios');
@@ -23,7 +24,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <>
       <GlobalStyle />
       {
         productData &&
@@ -33,9 +34,12 @@ const App = () => {
               <ProductImagesViewer productData={productData} />
               <ProductInfo productData={productData} />
             </Container>
+            {/* <CarouselModal productData={productData}/> */}
           </ProductOverviewContainer>
+
       }
-    </div>
+
+    </>
   )
 }
 

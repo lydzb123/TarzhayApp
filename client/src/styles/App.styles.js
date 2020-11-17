@@ -7,6 +7,7 @@ const darkGreen = 'rgb(0, 102, 1)';
 const warningOrange = 'rgb(184, 83, 0)';
 
 export const ProductOverviewContainer = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
 `;

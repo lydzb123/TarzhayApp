@@ -40,7 +40,17 @@ export const Ratings = styled.div`
     position: absolute;
   }
   .fa-star {
-    color: rgba(0, 255, 255, 0.25);
+    color: ${starYellow};
+  }
+
+  i {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  .fa-stack {
+    font-size: 0.75em;
   }
 
   .yellowBar {
@@ -53,9 +63,15 @@ export const Ratings = styled.div`
 `;
 
 export const Stars = styled.div`
-    font-size: 16px;
+    font-size: 12px;
 
     background: linear-gradient(90deg, ${starYellow} ${props => props.starPercent}%, gray ${props => props.starPercent}%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+`;
+
+export const QuantitySelect = styled.select`
+  &:hover {
+    background: lightGray;
+  }
 `;
