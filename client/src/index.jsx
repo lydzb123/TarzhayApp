@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-// import { GlobalStyle } from "./styles/App.styles.js";
-import ProductHeader from './components/ProductHeader.jsx';
-import ProductImagesViewer from './components/ProductImagesViewer.jsx';
+import { ProductOverviewContainer, Container, GlobalStyle } from "./styles/App.styles.js";
+import ProductHeader from './components/ProductHeader/ProductHeader.jsx';
+import ProductImagesViewer from './components/ProductImagesViewer/ProductImagesViewer.jsx';
+import ProductInfo from './components/ProductInfo/ProductInfo.jsx';
+import CarouselModal from './components/CarouselModal/CarouselModal.jsx';
 
 
 const axios = require('axios');
 
 const App = () => {
-  const [productData, setProductData] = useState({});
-  //asdkjfhaslkdf
+  const [productData, setProductData] = useState();
   useEffect(() => {
     getProductData();
   }, []);
@@ -23,11 +24,22 @@ const App = () => {
   }
 
   return (
-    <div>
-      {/* <GlobalStyle /> */}
-      <ProductHeader productData={productData} />
-      <ProductImagesViewer productData={productData} />
-    </div>
+    <>
+      <GlobalStyle />
+      {
+        productData &&
+          <ProductOverviewContainer>
+            <ProductHeader productData={productData} />
+            <Container>
+              <ProductImagesViewer productData={productData} />
+              <ProductInfo productData={productData} />
+            </Container>
+            {/* <CarouselModal productData={productData}/> */}
+          </ProductOverviewContainer>
+
+      }
+
+    </>
   )
 }
 
