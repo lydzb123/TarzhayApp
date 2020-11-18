@@ -17,9 +17,6 @@ export const Thumbnails = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid red;
-    /* flex-basis: 16.6667%; */
-    /* max-width: 16.6667%; */
-    /* width: 18%; */
     margin-right: 6px;
     padding-left: 12px;
 `;
@@ -59,10 +56,7 @@ export const DarkWrapper = styled.div`
 `;
 
 export const MainImageContainer = styled.div`
-    /* flex: auto; */
     margin: 3px 2px 2px 1px;
-    /* width: 400px:
-    height: 300px; */
     width: 100%;
     height: 100%;
     position: relative;
@@ -75,42 +69,33 @@ export const MainImageContainer = styled.div`
 
 export const ZoomLens = styled.div`
     position: absolute;
-    border: 1px solid #d4d4d4;
-    /*set the size of the lens:*/
-    width: 50px;
-    height: 50px;
+    /* border: 1px solid #d4d4d4; */
+    width: 100px;
+    height: 100px;
     &:hover {
         cursor: crosshair;
     }
 `;
 
 export const MainImage = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
     object-fit: contain;
-    /* width: 100%; */
     width: 525px;
     height: 525px;
 
     &:hover {
         cursor: crosshair;
-        /* opacity: 0; */
+        opacity: 0;
     }
 `;
 
 export const ZoomedImage = styled.div`
-    /*set the size of the result div:*/
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-    /* width: 100%; */
     width: 525px;
     height: 525px;
     background-image: url(${props => props.imageUrl});
-    /* background-position: center; */
-    /* background-size: contain; */
-    /* background-repeat: no-repeat; */
-    /* z-index: 10; */
 
-    /* opacity: 0; */
 
     &:hover {
         cursor: crosshair;
