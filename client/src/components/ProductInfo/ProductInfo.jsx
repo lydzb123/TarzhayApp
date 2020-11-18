@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
-import GenericModal from '../GenericModal/GenericModal.jsx';
+import React, {useState, useEffect, useRef} from 'react';
+import RatingsModal from '../RatingsModal/RatingsModal.jsx';
 import { ProductInfoContainer, Container, Button, Price, SaleText, Savings, Ratings, Stars } from './style.js';
 
 const ProductInfo = ({ productData }) => {
+  const [showRatingsModal, setShowRatingsModal] = useState(false);
+
+  const ref = useRef(null);
+
+
   const { price_reg, price_discount, sale_end, ratings_data, total_questions } = productData;
   const { five_star, four_star, three_star, two_star, one_star} = ratings_data;
+
+  // Math for discounts
   const discountAmt = (price_reg - price_discount).toFixed(2);
   const discountPercent = Math.round(discountAmt / price_reg * 100);
 
+  //Math for star ratings
   const stars = [five_star, four_star, three_star, two_star, one_star];
   const totalRatings = five_star + four_star + three_star + two_star + one_star;
   const avgRating = ((five_star * 5 + four_star * 4 + three_star * 3 + two_star * 2 + one_star) / totalRatings).toFixed(1);
@@ -19,7 +27,7 @@ const ProductInfo = ({ productData }) => {
     dateStyle: "short"
   });
 
-  console.log(starPercent, discountAmt, discountPercent);
+
   return (
     <ProductInfoContainer>
       <Container>
@@ -33,7 +41,10 @@ const ProductInfo = ({ productData }) => {
         {`reg ${price_reg} Save $${discountAmt} ${discountPercent}% off`}
       </Savings>
       <Ratings>
-        <button className="ratings-button">
+        <button className="ratings-button"
+          onClick={() => {
+            setShowRatingsModal(true);
+          }}>
           <Stars starPercent={starPercent}>
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
@@ -44,7 +55,11 @@ const ProductInfo = ({ productData }) => {
 
           <span className="total-ratings">{totalRatings}</span>
           <span className="sm-font">﹀</span>
-          <GenericModal totalRatings={totalRatings} avgRating={avgRating} stars={stars} starPercent={starPercent}/>
+          {showRatingsModal &&
+            <RatingsModal totalRatings={totalRatings}
+              avgRating={avgRating} stars={stars}
+              starPercent={starPercent}
+              setShowRatingsModal={setShowRatingsModal}/>}
         </button>
 
         <a href="#" className="sm-font">4 Questions</a>

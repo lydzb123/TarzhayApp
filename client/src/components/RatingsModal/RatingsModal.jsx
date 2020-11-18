@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { Container, Row, Col, StarBar } from './style.js';
 import { Stars } from '../ProductInfo/style.js';
 
-const GenericModal = ({totalRatings, avgRating, stars, starPercent}) => {
+const RatingsModal = ({totalRatings, avgRating, stars, starPercent, setShowRatingsModal}) => {
+  const ref = useRef(null);
+  const handleOutsideClick = (e) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setShowRatingsModal(false);
+    }
+  }
+
+  useEffect(() => {
+    // Bind the event listener
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [ref]);
+
   return (
-    <Container width={375}>
+    <Container width={375} ref={ref}>
       <Row className="header">
         <h2 className="avg-rating">{`${avgRating} out of 5`}</h2>
         <Stars starPercent={starPercent}>
@@ -39,4 +55,4 @@ const GenericModal = ({totalRatings, avgRating, stars, starPercent}) => {
   )
 };
 
-export default GenericModal;
+export default RatingsModal;

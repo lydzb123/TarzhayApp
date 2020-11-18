@@ -11,8 +11,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  top: 20px;
-  /* left: 0; */
+  top: 25px;
+  left: -100%;
 
   padding: 1rem 0.75rem;
 
@@ -57,8 +57,11 @@ export const StarBar = styled(Row)`
 
   .left,
   .right {
-    width: 12%;
     text-align: left;
+  }
+
+  .left {
+    width: 12%;
   }
 
   .gray-bar {
