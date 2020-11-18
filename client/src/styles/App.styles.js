@@ -10,8 +10,9 @@ export const ProductOverviewContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 65%;
     height: 100%;
+    margin: 0 auto;
 `;
 
 export const Container = styled.div`

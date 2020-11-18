@@ -7,7 +7,8 @@
     "test": "jest",
     "seed": "node database/seeding/seed.js",
     "react-dev": "webpack -w",
-    "start": "nodemon --exec babel-node server/index.js"
+    "start": "nodemon --exec babel-node server/index.js",
+    "client": "live-server"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "faker": "^5.1.0",
     "jest": "^26.6.3",
+    "live-server": "^1.2.1",
     "puppeteer": "^5.4.1",
     "react-test-renderer": "^17.0.1",
     "webpack": "^4.28.3",

@@ -17,7 +17,7 @@ export const Container = styled.div`
   display: flex;
 `;
 
-export const Link = styled.a`
+export const Button = styled.a`
   font-size: 12px;
 `;
 
@@ -27,14 +27,40 @@ export const Price = styled.h1`
 
 export const SaleText = styled.span`
   color: ${targetRed};
+
+  .sale {
+    font-size: 23px;
+  }
+  .date {
+    font-size: 14px;
+  }
 `;
 
 export const Savings = styled.div`
   font-size: 12px;
+  color: ${lightGray};
 `;
 
 export const Ratings = styled.div`
   display: flex;
+  font-size: 12px;
+  color: ${lightGray};
+
+  .total-ratings {
+    text-decoration: underline;
+    color: ${lightGray};
+  }
+  .total-ratings:hover {
+    text-decoration: none;
+  }
+
+  .ratings-button {
+    position: relative;
+    display: flex;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+  }
 
   .icons {
     position: absolute;
@@ -63,11 +89,11 @@ export const Ratings = styled.div`
 `;
 
 export const Stars = styled.div`
-    font-size: 12px;
-
+    display: flex;
     background: linear-gradient(90deg, ${starYellow} ${props => props.starPercent}%, gray ${props => props.starPercent}%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 14px;
 `;
 
 export const QuantitySelect = styled.select`

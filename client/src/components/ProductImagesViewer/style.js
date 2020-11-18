@@ -16,13 +16,12 @@ export const Container = styled.div`
 export const Thumbnails = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
     margin-right: 6px;
-    padding-left: 12px;
+    /* padding-left: 12px; */
 `;
 
 export const Thumbnail = styled.div`
-    margin: 3px 2px 2px 1px;
+    margin: 3px 2px 2px 0px;
     border: 1px solid ${lightGray};
     height: 100px;
     width: 100px;
