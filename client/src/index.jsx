@@ -11,7 +11,7 @@ const axios = require('axios');
 
 const App = () => {
   const [productData, setProductData] = useState();
-  const [carousel, setCarousel] = useState(true);
+  const [carousel, setCarousel] = useState(false);
 
   useEffect(() => {
     // document.addEventListener('click', (e) => {

@@ -10,13 +10,15 @@ import {
   ZoomedImage
 } from './style.js';
 
-const ProductImagesViewer = ({images}) => {
-  const [mainImage, setMainImage] = useState(images[0]);
+const ProductImagesViewer = ({images, toggleCarousel}) => {
+  const [imageIndex, setImageIndex] = useState(0);
 
+  // Target only displays the first 5 images
+  const thumbnailImages = images.slice(0, 5);
+  console.log(thumbnailImages);
 
-  const changeImage = (e) => {
-    const newImage = e.target.src;
-    setMainImage(newImage);
+  const changeImageIndex = (i) => {
+    setImageIndex(i);
   }
 
   const moveLens = (e) => {
@@ -38,7 +40,8 @@ const ProductImagesViewer = ({images}) => {
       const { left, top } = normalImg.getBoundingClientRect();
       x = pageX - left;
       y = pageY - top;
-
+      x = x - window.pageXOffset;
+      y = y - window.pageYOffset;
       return { x, y };
     }
     let { x, y } = getMousePosition(e);
@@ -67,29 +70,34 @@ const ProductImagesViewer = ({images}) => {
 
   return (
       <Container className="productImagesViewer">
-        <Thumbnails className="productImagesViewer--thumbnails">
-          {images && images.map((imageURL, i) => {
-            return (
-              <Thumbnail
-                key={imageURL} imageURL={imageURL}className="productImagesViewer--thumbnail"
-                onClick={changeImage}
-              >
-                { i === 4 && <div className="shadowOverlay">{`+${images.length - i} more`}</div> }
-              </Thumbnail>
-            );
-          })}
-        </Thumbnails>
-        <MainImageContainer className="productImagesViewer--mainImage">
-          <ZoomLens id="zoomLens" onMouseMove={moveLens} ></ZoomLens>
-          {images &&
-            <MainImage
-              id="normalImg" src={mainImage}
-              className="mainImage"
-              onMouseMove={moveLens}
-            />
-          }
-          {images && <ZoomedImage id="zoomedImg" imageUrl={mainImage} className="zoomImage" />}
-        </MainImageContainer>
+        {images &&
+          <>
+            <Thumbnails className="productImagesViewer--thumbnails">
+              {thumbnailImages.map((imageURL, i) => {
+                return (
+                  <Thumbnail
+                    key={imageURL} imageURL={imageURL} className="productImagesViewer--thumbnail"
+                    onClick={() => {
+                      changeImageIndex(i)
+                    }}
+                  >
+                    { i === 4 && <div className="shadowOverlay" onClick={toggleCarousel}>{`+${images.length - i} more`}</div> }
+                  </Thumbnail>
+                );
+              })}
+            </Thumbnails>
+            <MainImageContainer className="productImagesViewer--mainImage">
+              <ZoomLens id="zoomLens" onMouseMove={moveLens} ></ZoomLens>
+                <MainImage
+                  id="normalImg" src={images[imageIndex]}
+                  className="mainImage"
+                  onMouseMove={moveLens}
+                />
+              <ZoomedImage id="zoomedImg" imageUrl={images[imageIndex]} className="zoomImage" />
+            </MainImageContainer>
+          </>
+        }
+
       </Container>
   );
 }

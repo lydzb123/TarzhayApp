@@ -10,16 +10,25 @@ export const Container = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
   background-color: white;
 
+  .topRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4px 4rem;
+    height: 85%;
+  }
+
   .fa-times-circle {
     position: fixed;
-    top: 5rem;
-    right: 5rem;
+    top: 3rem;
+    right: 4rem;
   }
   .fa-times-circle:hover {
     cursor: pointer;
@@ -28,22 +37,24 @@ export const Container = styled.div`
 
 export const Thumbnails = styled.div`
   display: flex;
-  border: 1px solid red;
-  flex-basis: 16.6667%;
-  max-width: 16.6667%;
-  margin-right: 6px;
-  padding-left: 12px;
+  width: 100%;
+  justify-content: center;
 `;
 
 export const Thumbnail = styled.img`
-    margin: 3px 2px 2px 1px;
+    margin: 4px 2px;
     border: 1px solid ${lightGray};
     overflow: hidden;
     min-height: 74px;
     max-height: 111.5px;
     height: 7.7vh;
     /* height: 106px; */
-    width: 100%;
+    /* width: 100%; */
+`;
+
+export const MainImage = styled.img`
+  height: 100%;
+  max-width: 80%;
 `;
 
 export const MainImageContainer = styled.div`

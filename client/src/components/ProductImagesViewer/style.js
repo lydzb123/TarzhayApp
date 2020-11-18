@@ -8,16 +8,18 @@ const warningOrange = 'rgb(184, 83, 0)';
 
 export const Container = styled.div`
     display: flex;
-    /* justify-content: space-between; */
+    /* justify-content: center; */
     border: 1px solid red;
+    width: 60%;
 `;
 
 export const Thumbnails = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid red;
-    flex-basis: 16.6667%;
-    max-width: 16.6667%;
+    /* flex-basis: 16.6667%; */
+    /* max-width: 16.6667%; */
+    /* width: 18%; */
     margin-right: 6px;
     padding-left: 12px;
 `;
@@ -25,17 +27,17 @@ export const Thumbnails = styled.div`
 export const Thumbnail = styled.div`
     margin: 3px 2px 2px 1px;
     border: 1px solid ${lightGray};
-    overflow: hidden;
-    min-height: 74px;
-    max-height: 111.5px;
-    height: 7.7vh;
-    /* height: 106px; */
-    width: 100%;
+    height: 100px;
+    width: 100px;
 
     background-image: url("${props => props.imageURL}");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+
+    &:hover {
+        cursor: pointer;
+    }
 
     .shadowOverlay {
         display: flex;
@@ -57,43 +59,61 @@ export const DarkWrapper = styled.div`
 `;
 
 export const MainImageContainer = styled.div`
-    flex: auto;
+    /* flex: auto; */
     margin: 3px 2px 2px 1px;
     /* width: 400px:
     height: 300px; */
+    width: 100%;
+    height: 100%;
     position: relative;
+
+    overflow: hidden;
+    &:hover {
+        border: 1px solid ${darkGray};
+    }
 `;
 
 export const ZoomLens = styled.div`
     position: absolute;
     border: 1px solid #d4d4d4;
     /*set the size of the lens:*/
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     &:hover {
-        /* transform: scale(1.5); */
         cursor: crosshair;
     }
 `;
 
 export const MainImage = styled.img`
-    /* width: 100%;
-    object-fit: contain; */
-    width: 300px;
-    height: 240px;
-
+    object-fit: contain;
+    /* width: 100%; */
+    width: 525px;
+    height: 525px;
 
     &:hover {
-        /* transform: scale(1.5); */
         cursor: crosshair;
+        /* opacity: 0; */
     }
 `;
 
 export const ZoomedImage = styled.div`
     /*set the size of the result div:*/
-    width: 300px;
-    height: 300px;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    /* width: 100%; */
+    width: 525px;
+    height: 525px;
     background-image: url(${props => props.imageUrl});
-    background-position: center;
-    background-size: cover;
+    /* background-position: center; */
+    /* background-size: contain; */
+    /* background-repeat: no-repeat; */
+    /* z-index: 10; */
+
+    /* opacity: 0; */
+
+    &:hover {
+        cursor: crosshair;
+        opacity: 1;
+    }
 `;

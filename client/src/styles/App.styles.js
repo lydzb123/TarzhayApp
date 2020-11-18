@@ -10,11 +10,15 @@ export const ProductOverviewContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
 `;
 
 export const Container = styled.div`
     display: flex;
     border: 1px solid red;
+    /* justify-content: center; */
+    width: 100%;
 `;
 
 export const GlobalStyle = createGlobalStyle`

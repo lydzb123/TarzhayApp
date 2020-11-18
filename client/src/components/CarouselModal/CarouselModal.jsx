@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Container, Thumbnails, Thumbnail } from './style.js';
+import { Container, Thumbnails, Thumbnail, MainImage } from './style.js';
 
 const CarouselModal = ({ images, toggleCarousel }) => {
   // const [mainImage, setMainImage] = useState(images[0]);
@@ -15,11 +15,15 @@ const CarouselModal = ({ images, toggleCarousel }) => {
   }
 
   const nextImageIndex = () => {
-    setImageIndex(imageIndex + 1);
+    if (imageIndex < images.length - 1) {
+      setImageIndex(imageIndex + 1);
+    }
   }
 
   const prevImageIndex = () => {
-    setImageIndex(imageIndex - 1);
+    if (imageIndex > 0) {
+      setImageIndex(imageIndex - 1);
+    }
   }
 
   return (
@@ -29,12 +33,11 @@ const CarouselModal = ({ images, toggleCarousel }) => {
           <i className="far fa-circle fa-stack-2x"></i>
           <i className="fas fa-chevron-left fa-stack-1x"></i>
         </span>
-        <img src={images[imageIndex]} />
+        <MainImage src={images[imageIndex]} />
         <span className="fa-stack fa-2x" onClick={nextImageIndex}>
           <i className="far fa-circle fa-stack-2x"></i>
           <i className="fas fa-chevron-right fa-stack-1x"></i>
         </span>
-
       </div>
       <Thumbnails>
         {images.map((image, i) => {

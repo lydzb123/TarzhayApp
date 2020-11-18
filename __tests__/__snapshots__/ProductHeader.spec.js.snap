@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductHeader component Matches the snapshot 1`] = `
+<div
+  className="productHeader"
+>
+  <div
+    className="style__Breadcrumbs-sc-8km5h0-0 bLEPZT"
+  >
+    <span>
+      <a
+        className="productHeader--crumb"
+        href="#"
+      >
+        Target
+      </a>
+      <span>
+        /
+      </span>
+    </span>
+    <span>
+      <a
+        className="productHeader--crumb"
+        href="#"
+      >
+        Bikes
+      </a>
+      <span>
+        /
+      </span>
+    </span>
+    <span>
+      <a
+        className="productHeader--crumb"
+        href="#"
+      >
+        Chipss
+      </a>
+      <span>
+        /
+      </span>
+    </span>
+  </div>
+  <h1
+    className="style__ProductName-sc-8km5h0-1 fOviLX"
+  >
+    Gorgeous Frozen Car
+  </h1>
+  <a
+    className="productHeader--brandLink"
+    href="#"
+  >
+    Shop all Bergnaum Group
+  </a>
+</div>
+`;
