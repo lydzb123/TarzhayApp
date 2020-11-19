@@ -43,13 +43,12 @@ export const Thumbnails = styled.div`
 
 export const Thumbnail = styled.img`
     margin: 4px 2px;
-    border: 1px solid ${lightGray};
+    border: ${props => props.selected ? '2px' : '1px'} solid ${lightGray};
     overflow: hidden;
     min-height: 74px;
     max-height: 111.5px;
     height: 7.7vh;
-    /* height: 106px; */
-    /* width: 100%; */
+    opacity: ${props => props.selected ? '1' : '0.25'};
 `;
 
 export const MainImage = styled.img`

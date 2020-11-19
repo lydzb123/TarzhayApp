@@ -43,6 +43,7 @@ const CarouselModal = ({ images, toggleCarousel }) => {
         {images.map((image, i) => {
           return (
             <Thumbnail src={image}
+              selected={image === images[imageIndex]}
               onClick={() => {
                 changeImageIndex(i);
               }}

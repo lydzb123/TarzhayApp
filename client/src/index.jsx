@@ -46,17 +46,15 @@ const App = () => {
               />
               <ProductInfo productData={productData} />
             </Container>
-            {
-              carousel &&
-                <CarouselModal
-                  images={productData.images}
-                  toggleCarousel={toggleCarousel}
-                />
-            }
           </ProductOverviewContainer>
-
       }
-
+      {
+        (carousel && productData) &&
+          <CarouselModal
+            images={productData.images}
+            toggleCarousel={toggleCarousel}
+          />
+      }
     </>
   )
 }

@@ -1,6 +1,17 @@
 import React, {useState, useEffect, useRef} from 'react';
 import RatingsModal from '../RatingsModal/RatingsModal.jsx';
-import { ProductInfoContainer, Container, Button, Price, SaleText, Savings, Ratings, Stars } from './style.js';
+import {
+  ProductInfoContainer,
+  Container,
+  Button,
+  Price,
+  SaleText,
+  Savings,
+  Ratings,
+  Stars,
+  Select,
+  SelectLabel
+} from './style.js';
 
 const ProductInfo = ({ productData }) => {
   const [showRatingsModal, setShowRatingsModal] = useState(false);
@@ -23,7 +34,7 @@ const ProductInfo = ({ productData }) => {
 
   let date = new Date(sale_end);
   date = date.toLocaleString("en-US", {
-    timeStyle: "short",
+    // timeStyle: "short",
     dateStyle: "short"
   });
 
@@ -31,14 +42,16 @@ const ProductInfo = ({ productData }) => {
   return (
     <ProductInfoContainer>
       <Container>
-        <Price sale={sale_end}>${price_discount ? price_discount : price_reg}</Price>
         <SaleText>
+          <Price
+            sale={sale_end}>{price_discount ? `$${price_discount.toFixed(2)}` : `$${price_reg.toFixed(2)}`}
+          </Price>
           <span className="sale">Sale</span>
           <span className="date">{` ends ${date}`}</span>
         </SaleText>
       </Container>
       <Savings>
-        {`reg ${price_reg} Save $${discountAmt} ${discountPercent}% off`}
+        {`reg $${price_reg.toFixed(2)} Save $${discountAmt} ${discountPercent}% off`}
       </Savings>
       <Ratings>
         <button className="ratings-button"
@@ -62,13 +75,18 @@ const ProductInfo = ({ productData }) => {
               setShowRatingsModal={setShowRatingsModal}/>}
         </button>
 
-        <a href="#" className="sm-font">4 Questions</a>
+        <a href="#" className="questions-link">{`${total_questions} Questions`}</a>
 
       </Ratings>
-      <select>
-        <option>1</option>
-        <option>2</option>
-      </select>
+
+      <Select name="quantity-select">
+        <SelectLabel>Quantity</SelectLabel>
+        <select className="quantity-select">
+          <option>1</option>
+          <option>2</option>
+        </select>
+      </Select>
+
     </ProductInfoContainer>
   );
 };

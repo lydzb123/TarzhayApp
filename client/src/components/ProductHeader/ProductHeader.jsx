@@ -12,7 +12,7 @@ const ProductHeader = ({productData}) => {
               //TODO add unique key
               <span key={crumb}>
                 <a href="#" className="productHeader--crumb">{crumb}</a>
-                <span>/</span>
+                <span className="divider">/</span>
               </span>
             )
           })}

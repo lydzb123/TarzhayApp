@@ -7,12 +7,13 @@ import {
   MainImageContainer,
   ZoomLens,
   MainImage,
-  ZoomedImage
+  ZoomedImage,
+  HeartIcon
 } from './style.js';
 
 const ProductImagesViewer = ({images, toggleCarousel}) => {
   const [imageIndex, setImageIndex] = useState(0);
-
+  const [saveHeart, setSaveHeart] = useState(false);
   // Target only displays the first 5 images
   const thumbnailImages = images.slice(0, 5);
   console.log(thumbnailImages);
@@ -68,6 +69,22 @@ const ProductImagesViewer = ({images, toggleCarousel}) => {
     zoomedImg.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
   }
 
+  const getMousePosition = (e) => {
+    let x = 0;
+    let y = 0;
+    const { pageX, pageY } = e;
+    const { left, top } = normalImg.getBoundingClientRect();
+    x = pageX - left;
+    y = pageY - top;
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return { x, y };
+  }
+
+  const toggleSaveHeart = () => {
+    setSaveHeart(!saveHeart);
+  }
+
   return (
       <Container className="productImagesViewer">
         {images &&
@@ -76,7 +93,10 @@ const ProductImagesViewer = ({images, toggleCarousel}) => {
               {thumbnailImages.map((imageURL, i) => {
                 return (
                   <Thumbnail
-                    key={imageURL} imageURL={imageURL} className="productImagesViewer--thumbnail"
+                    key={imageURL}
+                    imageURL={imageURL}
+                    selected={imageURL === images[imageIndex]}
+                    className="productImagesViewer--thumbnail"
                     onClick={() => {
                       changeImageIndex(i)
                     }}
@@ -97,7 +117,11 @@ const ProductImagesViewer = ({images, toggleCarousel}) => {
             </MainImageContainer>
           </>
         }
-
+        <HeartIcon className="fa-stack fa-2x" onClick={toggleSaveHeart}>
+          <i className="fas fa-circle fa-stack-2x white"></i>
+          <i className="far fa-circle fa-stack-2x gray"></i>
+          <i className={saveHeart ? "fas fa-heart fa-stack-1x red" : "far fa-heart fa-stack-1x gray"}></i>
+        </HeartIcon>
       </Container>
   );
 }

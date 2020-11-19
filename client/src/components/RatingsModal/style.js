@@ -14,6 +14,7 @@ export const Container = styled.div`
   top: 25px;
   left: -100%;
 
+  overflow: hidden;
   padding: 1rem 0.75rem;
 
   border: 1px solid ${darkGray};

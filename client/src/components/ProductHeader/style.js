@@ -10,6 +10,10 @@ export const Breadcrumbs = styled.div`
     color: ${lightGray};
     font-size: 12px;
     padding: 4px 4px;
+
+    .divider {
+        margin: 0 0.2rem;
+    }
 `;
 
 export const ProductName = styled.h1`

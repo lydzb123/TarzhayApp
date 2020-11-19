@@ -7,9 +7,8 @@ const darkGreen = 'rgb(0, 102, 1)';
 const warningOrange = 'rgb(184, 83, 0)';
 
 export const Container = styled.div`
+    position: relative;
     display: flex;
-    /* justify-content: center; */
-    border: 1px solid red;
     width: 60%;
 `;
 
@@ -22,7 +21,14 @@ export const Thumbnails = styled.div`
 
 export const Thumbnail = styled.div`
     margin: 3px 2px 2px 0px;
-    border: 1px solid ${lightGray};
+    /* border: 1px solid ${lightGray}; */
+    border: ${props => {
+        if (props.selected) {
+            return `1px solid ${lightGray}`;
+        } else {
+            return 'none';
+        }
+    }};
     height: 100px;
     width: 100px;
 
@@ -99,5 +105,29 @@ export const ZoomedImage = styled.div`
     &:hover {
         cursor: crosshair;
         opacity: 1;
+    }
+`;
+
+export const HeartIcon = styled.span`
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1em;
+
+    i {
+        vertical-align: middle;
+    }
+    .fa-heart {
+        margin-left: -0.5px;
+        margin-top: 1px;
+    }
+    .gray {
+        color: ${darkGray};
+    }
+    .white {
+        color: white;
+    }
+    .red {
+        color: ${targetRed};
     }
 `;
