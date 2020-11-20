@@ -9,7 +9,8 @@ const warningOrange = 'rgb(184, 83, 0)';
 export const Container = styled.div`
     position: relative;
     display: flex;
-    width: 60%;
+    width: 50%;
+    margin-top: 1rem;
 `;
 
 export const Thumbnails = styled.div`
@@ -20,8 +21,7 @@ export const Thumbnails = styled.div`
 `;
 
 export const Thumbnail = styled.div`
-    margin: 3px 2px 2px 0px;
-    /* border: 1px solid ${lightGray}; */
+    margin: 0 2px 5px 0;
     border: ${props => {
         if (props.selected) {
             return `1px solid ${lightGray}`;
@@ -29,6 +29,7 @@ export const Thumbnail = styled.div`
             return 'none';
         }
     }};
+    cursor: ${props => props.selected ? 'default' : 'pointer'};
     height: 100px;
     width: 100px;
 
@@ -36,10 +37,6 @@ export const Thumbnail = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-
-    &:hover {
-        cursor: pointer;
-    }
 
     .shadowOverlay {
         display: flex;
@@ -61,7 +58,8 @@ export const DarkWrapper = styled.div`
 `;
 
 export const MainImageContainer = styled.div`
-    margin: 3px 2px 2px 1px;
+    margin: 0 2px 0 1px;
+    /* margin: 3px 2px 0px 1px; */
     width: 100%;
     height: 100%;
     position: relative;
@@ -89,6 +87,7 @@ export const MainImage = styled.img`
     object-fit: contain;
     width: 525px;
     height: 525px;
+    border: 1px solid white;
 
     &:hover {
         cursor: crosshair;
@@ -110,13 +109,10 @@ export const ZoomedImage = styled.div`
 
 export const HeartIcon = styled.span`
     position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 2.5rem;
+    right: 2.5rem;
     font-size: 1em;
 
-    i {
-        vertical-align: middle;
-    }
     .fa-heart {
         margin-left: -0.5px;
         margin-top: 1px;

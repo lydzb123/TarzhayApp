@@ -10,15 +10,15 @@ export const ProductOverviewContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 65%;
+    width: 72%;
     height: 100%;
-    margin: 0 auto;
+    margin: 1rem auto;
 `;
 
-export const Container = styled.div`
+export const Row = styled.div`
     display: flex;
-    border: 1px solid red;
-    /* justify-content: center; */
+
+    justify-content: space-between;
     width: 100%;
 `;
 
@@ -38,6 +38,11 @@ export const GlobalStyle = createGlobalStyle`
 
     a:hover {
         text-decoration: none;
+    }
+
+    button:focus,
+    input:focus{
+        outline: none;
     }
 
     img {

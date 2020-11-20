@@ -5,7 +5,13 @@ import { Stars } from '../ProductInfo/style.js';
 const RatingsModal = ({totalRatings, avgRating, stars, starPercent, setShowRatingsModal}) => {
   const ref = useRef(null);
   const handleOutsideClick = (e) => {
-    if (ref.current && !ref.current.contains(event.target)) {
+    const {className} = e.target
+
+    if (ref.current && !ref.current.contains(e.target) &&
+      !className.includes('ratings') &&
+      !className.includes('star') &&
+      !className.includes('chevron')
+    ) {
       setShowRatingsModal(false);
     }
   }
@@ -30,8 +36,9 @@ const RatingsModal = ({totalRatings, avgRating, stars, starPercent, setShowRatin
           <i className="fas fa-star"></i>
           <i className="fas fa-star"></i>
         </Stars>
+        <div className="pointer"></div>
       </Row>
-      <Row >
+      <Row>
         <span>{`${totalRatings} guest ratings`}</span>
       </Row>
 
@@ -40,11 +47,11 @@ const RatingsModal = ({totalRatings, avgRating, stars, starPercent, setShowRatin
           const percent = Math.round((star / totalRatings) * 100);
           return (
             <StarBar width={375} percent={percent}>
-              <span className="left">{`${5 - i} star${i !== 4 ? 's' : ''}`}</span>
-              <div className="gray-bar">
+              <span href="#" className="left">{`${5 - i} star${i !== 4 ? 's' : ''}`}</span>
+              <span href="#" className="gray-bar">
                 <div className="green-bar" percent={percent}></div>
-              </div>
-              <span className="right">{`${percent}%`}</span>
+              </span>
+              <span href="#" className="right">{`${percent}%`}</span>
             </StarBar>
           );
         })}

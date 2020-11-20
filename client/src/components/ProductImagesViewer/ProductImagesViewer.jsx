@@ -16,7 +16,6 @@ const ProductImagesViewer = ({images, toggleCarousel}) => {
   const [saveHeart, setSaveHeart] = useState(false);
   // Target only displays the first 5 images
   const thumbnailImages = images.slice(0, 5);
-  console.log(thumbnailImages);
 
   const changeImageIndex = (i) => {
     setImageIndex(i);
@@ -98,7 +97,8 @@ const ProductImagesViewer = ({images, toggleCarousel}) => {
                     selected={imageURL === images[imageIndex]}
                     className="productImagesViewer--thumbnail"
                     onClick={() => {
-                      changeImageIndex(i)
+                      // prevents broken img, after closing carousel
+                      changeImageIndex(imageURL ? i : 0)
                     }}
                   >
                     { i === 4 && <div className="shadowOverlay" onClick={toggleCarousel}>{`+${images.length - i} more`}</div> }

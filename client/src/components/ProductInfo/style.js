@@ -7,16 +7,21 @@ const darkGray = 'rgb(51, 51, 51)';
 const darkGreen = 'rgb(0, 102, 1)';
 const warningOrange = 'rgb(184, 83, 0)';
 const starYellow = 'rgb(255, 215, 0)';
+const borderGray = 'rgb(214, 214, 214)'
 
 export const ProductInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
-  padding: 2rem;
+  padding: 2rem 1rem 2rem 1rem;
 `;
 
 export const Container = styled.div`
   display: flex;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  width: 100%;
 `;
 
 export const Button = styled.a`
@@ -32,9 +37,6 @@ export const Price = styled.span`
 
 export const SaleText = styled.span`
   color: ${targetRed};
-  /* display: flex; */
-  /* align-items: flex-end; */
-  /* line-height: 1rem; */
 
   .sale {
     font-size: 23px;
@@ -49,13 +51,16 @@ export const SaleText = styled.span`
 export const Savings = styled.div`
   font-size: 12px;
   color: ${lightGray};
+  margin: 0.5rem 0;
 `;
 
 export const Ratings = styled.div`
   display: flex;
   font-size: 12px;
   color: ${lightGray};
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid ${borderGray};
+
 
   .total-ratings {
     text-decoration: underline;
@@ -70,6 +75,8 @@ export const Ratings = styled.div`
     display: flex;
     background-color: white;
     border: none;
+    padding: 0;
+    margin-right: .2rem;
     cursor: pointer;
   }
 
@@ -92,6 +99,11 @@ export const Ratings = styled.div`
 
   .questions-link {
     border-left: 1px solid ${lightGray};
+    padding-left: .2rem;
+  }
+
+  .chevron {
+    font-weight: bold;
   }
 `;
 
@@ -111,9 +123,10 @@ export const QuantitySelect = styled.select`
 
 export const Select = styled.div`
   position: relative;
-  width: 30%;
+  width: 35%;
 
   .quantity-select {
+    border-radius: 3px;
     padding: 0.75rem 0.5rem;
     width: 100%;
   }
@@ -131,4 +144,27 @@ export const SelectLabel = styled.h4`
   transform: translate(-50%, -10%);
 
   background-color: white;
+`;
+
+export const Promo = styled.div`
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid ${borderGray};
+
+  .top-row {
+    align-items: flex-end;
+  }
+
+  .main-text {
+    font-size: 14px;
+    margin-left: 0.3rem;
+    padding-bottom: 0.1rem;
+  }
+  .sub-text {
+    font-size: 12px;
+    margin-top: 0.5rem;
+  }
+  .learn-more-link {
+    font-size: 10px;
+  }
 `;

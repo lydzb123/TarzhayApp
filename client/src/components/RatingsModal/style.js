@@ -8,13 +8,14 @@ const warningOrange = 'rgb(184, 83, 0)';
 
 export const Container = styled.div`
   position: absolute;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   top: 25px;
   left: -100%;
 
-  overflow: hidden;
+  overflow: visible;
   padding: 1rem 0.75rem;
 
   border: 1px solid ${darkGray};
@@ -32,9 +33,24 @@ export const Container = styled.div`
   .reviews-link {
     margin-top: 2em;
   }
+
+  .pointer {
+    position: absolute;
+    top: -1.6rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-top: 1px solid ${darkGray};
+    border-left: 1px solid ${darkGray};
+    height: 1rem;
+    width: 1rem;
+    background-color: white;
+    transform: rotate(45deg);
+  }
 `;
 
 export const Row = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   margin-bottom: 2em;
@@ -55,6 +71,10 @@ export const StarBar = styled(Row)`
   width: ${props => props.width}px;
   align-items: center;
   margin-bottom: 0.2rem;
+
+  span:hover {
+    text-decoration: underline;
+  }
 
   .left,
   .right {
