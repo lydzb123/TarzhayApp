@@ -20,6 +20,10 @@
     "url": "https://github.com/XMPrime/hrsjo2-FEC-product-images-viewer/issues"
   },
   "homepage": "https://github.com/XMPrime/hrsjo2-FEC-product-images-viewer#readme",
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "setupFiles": ["./src/setupTests.js"]
+  },
   "dependencies": {
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
@@ -37,8 +41,12 @@
     "@babel/node": "^7.12.6",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.1",
     "babel-plugin-styled-components": "^1.11.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
     "eslint": "^7.13.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",

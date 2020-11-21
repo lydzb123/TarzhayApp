@@ -23,7 +23,10 @@ const App = () => {
   }, []);
 
   const getProductData = () => {
-    axios.get(`/api/products${window.location.pathname}`)
+    const url = window.location.pathname.slice(0, -1);
+    const id = url.substring(url.lastIndexOf('/') + 1);
+
+    axios.get(`/api/products/${id}`)
       .then(({data}) => {
         console.log(data);
         data.images.push('');
@@ -65,4 +68,4 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('service1'));
