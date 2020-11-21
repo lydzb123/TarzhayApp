@@ -142,9 +142,20 @@ const generateFakeProducts = (quantity) => {
         `${s3Url}/uno/5.webp`,
         `${s3Url}/uno/6.webp`
       ],
+      [
+        `${s3Url}/7-wonders/0.webp`,
+        `${s3Url}/7-wonders/1.webp`,
+        `${s3Url}/7-wonders/2.webp`,
+        `${s3Url}/7-wonders/3.webp`,
+        `${s3Url}/7-wonders/4.webp`,
+        `${s3Url}/7-wonders/5.webp`,
+        `${s3Url}/7-wonders/6.webp`,
+        `${s3Url}/7-wonders/7.webp`,
+        `${s3Url}/7-wonders/8.webp`
+      ],
     ];
 
-    const randNum = random.number({min: 0, max: 7});
+    const randNum = random.number({min: 0, max: images.length - 1});
     fakeProduct.images = images[randNum];
 
     fakeProducts.push(fakeProduct);

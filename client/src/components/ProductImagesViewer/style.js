@@ -7,70 +7,123 @@ const darkGreen = 'rgb(0, 102, 1)';
 const warningOrange = 'rgb(184, 83, 0)';
 
 export const Container = styled.div`
+    position: relative;
     display: flex;
-    /* justify-content: space-between; */
-    border: 1px solid red;
+    width: 50%;
+    margin-top: 1rem;
 `;
 
 export const Thumbnails = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
-    flex-basis: 16.6667%;
-    max-width: 16.6667%;
     margin-right: 6px;
-    padding-left: 12px;
+    /* padding-left: 12px; */
 `;
 
-export const Thumbnail = styled.img`
-    margin: 3px 2px 2px 1px;
-    border: 1px solid ${lightGray};
-    overflow: hidden;
-    min-height: 74px;
-    max-height: 111.5px;
-    height: 7.7vh;
-    /* height: 106px; */
-    width: 100%;
+export const Thumbnail = styled.div`
+    margin: 0 2px 5px 0;
+    border: ${props => {
+        if (props.selected) {
+            return `1px solid ${lightGray}`;
+        } else {
+            return 'none';
+        }
+    }};
+    cursor: ${props => props.selected ? 'default' : 'pointer'};
+    height: 100px;
+    width: 100px;
+
+    background-image: url("${props => props.imageURL}");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .shadowOverlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+    }
+`;
+
+export const DarkWrapper = styled.div`
+    background-color: black;
+    opacity: 0.4;
+    color: white;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const MainImageContainer = styled.div`
-    flex: auto;
-    margin: 3px 2px 2px 1px;
-    /* width: 400px:
-    height: 300px; */
+    margin: 0 2px 0 1px;
+    /* margin: 3px 2px 0px 1px; */
+    width: 100%;
+    height: 100%;
     position: relative;
+
+    overflow: hidden;
+    &:hover {
+        border: 1px solid ${darkGray};
+    }
 `;
 
 export const ZoomLens = styled.div`
     position: absolute;
-    border: 1px solid #d4d4d4;
-    /*set the size of the lens:*/
-    width: 40px;
-    height: 40px;
+    /* border: 1px solid #d4d4d4; */
+    width: 100px;
+    height: 100px;
     &:hover {
-        /* transform: scale(1.5); */
         cursor: crosshair;
     }
 `;
 
 export const MainImage = styled.img`
-    /* width: 100%;
-    object-fit: contain; */
-    width: 300px;
-    height: 240px;
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+    width: 525px;
+    height: 525px;
+    border: 1px solid white;
 
     &:hover {
-        /* transform: scale(1.5); */
         cursor: crosshair;
+        opacity: 0;
     }
 `;
 
 export const ZoomedImage = styled.div`
-    /*set the size of the result div:*/
-    width: 300px;
-    height: 300px;
+    width: 525px;
+    height: 525px;
     background-image: url(${props => props.imageUrl});
-    background-position: center;
-    background-size: cover;
+
+
+    &:hover {
+        cursor: crosshair;
+        opacity: 1;
+    }
+`;
+
+export const HeartIcon = styled.span`
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    font-size: 1em;
+
+    .fa-heart {
+        margin-left: -0.5px;
+        margin-top: 1px;
+    }
+    .gray {
+        color: ${darkGray};
+    }
+    .white {
+        color: white;
+    }
+    .red {
+        color: ${targetRed};
+    }
 `;
