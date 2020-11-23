@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RatingsModal should render the Stars component correctly given a starPercent  1`] = `
+<div
+  class="style__Stars-sc-1d1ag70-8 jIljdQ"
+/>
+`;
+
+exports[`RatingsModal should render the star-bars correctly with a given percent 1`] = `
+<div
+  class="style__Row-e8eyjc-1 style__StarBar-e8eyjc-3 jnTOSY buQbmk"
+  width="375"
+/>
+`;

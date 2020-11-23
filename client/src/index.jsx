@@ -7,31 +7,25 @@ import ProductInfo from './components/ProductInfo/ProductInfo.jsx';
 import CarouselModal from './components/CarouselModal/CarouselModal.jsx';
 import Navbar from './components/Navbar/Navbar.jsx'
 import DeliveryCards from './components/DeliveryCards/DeliveryCards.jsx';
-
-
-const axios = require('axios');
+import axios from 'axios';
 
 const App = () => {
   const [productData, setProductData] = useState();
   const [carousel, setCarousel] = useState(false);
 
   useEffect(() => {
-    // document.addEventListener('click', (e) => {
-    //   console.log(e.target)
-    // })
     getProductData();
   }, []);
 
   const getProductData = () => {
-    const url = window.location.pathname.slice(0, -1);
-    const id = url.substring(url.lastIndexOf('/') + 1);
+    // const url = window.location.pathname.slice(0, -1);
+    // const id = url.substring(url.lastIndexOf('/') + 1);
 
-    axios.get(`/api/products/${id}`)
+    axios.get(`/api/products${window.location.pathname}`)
       .then(({data}) => {
-        console.log(data);
+        // Pushes '' to render extra thumbnail for adding user photos
         data.images.push('');
         setProductData(data);
-        console.log(data);
       });
   }
 

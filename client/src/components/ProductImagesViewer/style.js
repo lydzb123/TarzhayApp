@@ -72,7 +72,7 @@ export const MainImageContainer = styled.div`
 
 export const ZoomLens = styled.div`
     position: absolute;
-    /* border: 1px solid #d4d4d4; */
+    border: 1px solid #d4d4d4;
     width: 100px;
     height: 100px;
     &:hover {
@@ -103,7 +103,6 @@ export const ZoomedImage = styled.div`
 
     &:hover {
         cursor: crosshair;
-        opacity: 1;
     }
 `;
 
