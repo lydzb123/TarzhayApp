@@ -18,10 +18,10 @@ const App = () => {
   }, []);
 
   const getProductData = () => {
-    // const url = window.location.pathname.slice(0, -1);
-    // const id = url.substring(url.lastIndexOf('/') + 1);
+    const { href } = window.location;
+    const id = href.substring(href.lastIndexOf('/') + 1);
 
-    axios.get(`/api/products${window.location.pathname}`)
+    axios.get(`/api/products/${id || 0}`)
       .then(({data}) => {
         // Pushes '' to render extra thumbnail for adding user photos
         data.images.push('');

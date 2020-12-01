@@ -12,7 +12,7 @@ export const ProductOverviewContainer = styled.div`
     flex-direction: column;
     width: 72%;
     height: 100%;
-    margin: 1rem auto;
+    margin: 1rem auto 2rem auto;
 `;
 
 export const Row = styled.div`

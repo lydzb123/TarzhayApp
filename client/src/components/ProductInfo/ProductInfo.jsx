@@ -58,7 +58,6 @@ const ProductInfo = ({ productData }) => {
       <Ratings>
         <button className="ratings-button"
           onClick={() => {
-            console.log('???')
             setShowRatingsModal(!showRatingsModal);
           }}>
           <Stars starPercent={starPercent}>
@@ -78,7 +77,7 @@ const ProductInfo = ({ productData }) => {
               setShowRatingsModal={setShowRatingsModal}/>}
         </button>
 
-        <a href="#" className="questions-link">{`${total_questions} Questions`}</a>
+        <a href="#service2" className="questions-link">{`${total_questions} Questions`}</a>
 
       </Ratings>
 

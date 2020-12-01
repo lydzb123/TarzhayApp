@@ -37,7 +37,7 @@ const DeliveryCards = () => {
       {tempData.map(card => {
         const { title, at, local_area, button_text, time_text, main_text, sub_text} = card;
         return (
-          <DeliveryCard>
+          <DeliveryCard key={button_text}>
             <Row className="top-half">
               <Col className="left">
                 <Row className="title">
