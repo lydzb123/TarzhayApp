@@ -72,7 +72,15 @@ export const StarBar = styled(Row)`
   align-items: center;
   margin-bottom: 0.2rem;
 
-  span:hover {
+  &:hover {
+    text-decoration: underline;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
     text-decoration: underline;
   }
 

@@ -113,7 +113,7 @@ const ProductImagesViewer = ({images, toggleCarousel}) => {
                 className="mainImage"
                 onMouseMove={moveLens}
               />
-              <ZoomedImage id="zoomedImg" imageUrl={images[imageIndex]} className="zoomImage" />
+              <ZoomedImage id="zoomedImg" src={images[imageIndex]} imageUrl={images[imageIndex]} className="zoomImage" />
             </MainImageContainer>
           </>
         }

@@ -59,9 +59,6 @@ export const DarkWrapper = styled.div`
 
 export const MainImageContainer = styled.div`
     margin: 0 2px 0 1px;
-    /* margin: 3px 2px 0px 1px; */
-    width: 100%;
-    height: 100%;
     position: relative;
 
     overflow: hidden;
@@ -85,6 +82,7 @@ export const MainImage = styled.img`
     top: 0;
     left: 0;
     object-fit: contain;
+    background-color: white;
     width: 525px;
     height: 525px;
     border: 1px solid white;

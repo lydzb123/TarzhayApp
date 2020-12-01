@@ -46,12 +46,12 @@ const RatingsModal = ({totalRatings, avgRating, stars, starPercent, setShowRatin
         {stars.map((star, i) => {
           const percent = Math.round((star / totalRatings) * 100);
           return (
-            <StarBar width={375} percent={percent}>
-              <span href="#" className="left">{`${5 - i} star${i !== 4 ? 's' : ''}`}</span>
-              <span href="#" className="gray-bar">
+            <StarBar key={5 - i} width={375} percent={percent} >
+              <a href="#service3" className="left">{`${5 - i} star${i !== 4 ? 's' : ''}`}</a>
+              <a href="#service3" className="gray-bar">
                 <div className="green-bar" percent={percent}></div>
-              </span>
-              <span href="#" className="right">{`${percent}%`}</span>
+              </a>
+              <a href="#service3" className="right">{`${percent}%`}</a>
             </StarBar>
           );
         })}
