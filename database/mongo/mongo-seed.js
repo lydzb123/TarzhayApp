@@ -4,18 +4,17 @@ const { internet, random, commerce, date, company, image, lorem } = faker;
 
 
 const start = Date.now();
-
 console.log('starting timer...');
 console.log(start);
 
 
 
-fs.writeFileSync( './output.json', '[');
 
-
+fs.writeFileSync( './products.json', '[');
 var index = 0;
 
-const seedData = async _ => {
+
+const seedData = () => {
 
   for (let j = 0; j < 50; j++) {
   var productCatalog = "";
@@ -36,7 +35,6 @@ const seedData = async _ => {
         "link_text": "Learn More"
       }]`;
 
-
       var photos = [
       `["https://placeimg.com/640/480/animals",
         "https://placeimg.com/640/480/tech",
@@ -47,10 +45,6 @@ const seedData = async _ => {
      `["https://placeimg.com/640/480/arch",
        "https://placeimg.com/640/480/any",
        "https://placeimg.com/640/480/tech"]`];
-
-
-
-
 
       var product = `{
         "id": ${index},
@@ -75,25 +69,11 @@ const seedData = async _ => {
       productCatalog +=  ']';
     }
 
-    await fs.writeFileSync( 'test.json', productCatalog, { flag: 'a+' });
-    await console.log('entries: ', index, '| time: ', (Date.now() - start) /1000);
+   fs.writeFileSync( 'products.json', productCatalog, { flag: 'a+' });
+   console.log('entries: ', index, '| time: ', (Date.now() - start) /1000);
   }
 }
 
 
-
-
 seedData();
 
-// mongoimport -d mydb -c things --type json --file /Users/lydia/HR/test.json --jsonArray;
-
-// /Users/lydia/HR/hrsjo2-FEC-product-overview/output.json
-
-//create schema
-//run seed
-//run shell
-
-
-
-// const shell = require('shelljs')
-// shell.exec('./path_to_your_file')
