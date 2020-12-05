@@ -1,7 +1,16 @@
-DROP DATABASE sdc CASCADE;
+-- DROP DATABASE sdc CASCADE;
+
 CREATE DATABASE sdc;
 
 \c sdc;
+
+CREATE TABLE promos (
+  id SERIAL PRIMARY KEY,
+  main_text VARCHAR(160),
+  sub_text VARCHAR(160),
+  link_text VARCHAR(160)
+);
+
 
 CREATE TABLE products (
   id SERIAL PRIMARY KEY,
@@ -12,7 +21,12 @@ CREATE TABLE products (
   price_discount NUMERIC(7,2),
   sale_end DATE NOT NULL DEFAULT CURRENT_DATE,
   total_reviews smallint,
-  total_questions smallint
+  total_questions smallint,
+  promo_id INT,
+
+  CONSTRAINT fk_promo
+    FOREIGN KEY(promo_id)
+      REFERENCES promos(id)
   );
 
 
@@ -22,23 +36,10 @@ CREATE TABLE images (
   photo_url VARCHAR,
 
   CONSTRAINT fk_product
-  FOREIGN KEY(product_id)
-  REFERENCES products(id)
+    FOREIGN KEY(product_id)
+      REFERENCES products(id)
 );
 
-
--- TOEDIT: instead of generating many promorecords, products should have a promoforeignkey
-CREATE TABLE promos (
-  id SERIAL PRIMARY KEY,
-  product_id INT,
-  main_text VARCHAR(160),
-  sub_text VARCHAR(160),
-  link_text VARCHAR(160),
-
-  CONSTRAINT fk_product
-  FOREIGN KEY(product_id)
-  REFERENCES products(id)
-);
 
 
 CREATE TABLE ratings (
@@ -51,15 +52,31 @@ CREATE TABLE ratings (
   one_star_count INT,
 
   CONSTRAINT fk_product
-  FOREIGN KEY(product_id)
-  REFERENCES products(id)
+    FOREIGN KEY(product_id)
+      REFERENCES products(id)
 );
 
+SELECT CURRENT_TIMESTAMP;
+COPY promos
+FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/promos.csv'
+DELIMITER ',' CSV HEADER;
 
-COPY products FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/products.csv' DELIMITER ',' CSV HEADER;
-COPY promos FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/promos.csv' DELIMITER ',' CSV HEADER;
-COPY images FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/images.csv' DELIMITER ',' CSV HEADER;
-COPY ratings FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/ratings.csv' DELIMITER ',' CSV HEADER;
+SELECT CURRENT_TIMESTAMP;
+COPY products
+FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/products.csv'
+DELIMITER ',' CSV HEADER;
+
+SELECT CURRENT_TIMESTAMP;
+COPY images
+FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/images.csv'
+DELIMITER ',' CSV HEADER;
+
+SELECT CURRENT_TIMESTAMP;
+COPY ratings
+FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/ratings.csv'
+DELIMITER ',' CSV HEADER;
+
+SELECT CURRENT_TIMESTAMP;
 
 
 
