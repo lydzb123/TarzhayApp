@@ -1,3 +1,9 @@
 node_modules
 config.js
 /client/dist/hot
+notas.js
+
+products.csv
+promos.csv
+ratings.csv
+images.csv
