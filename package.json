@@ -6,6 +6,8 @@
   "scripts": {
     "test": "jest",
     "seed": "node database/seeding/seed.js",
+    "mongo-seed": "node database/mongo/mongo-seed.js && node database/mongo && mongoimport -d sdc -c products --type json --file /Users/lydia/HR/hrsjo2-FEC-product-overview/products.json --jsonArray",
+    "psql-seed": "node database/postgres && psql < /Users/lydia/HR/hrsjo2-FEC-product-overview/database/postgres/schema.sql",
     "react-dev": "webpack -w",
     "start": "nodemon --exec babel-node server/index.js",
     "client": "live-server"
@@ -28,6 +30,7 @@
     "mongoose": "^5.10.13",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.6",
+    "pg": "^8.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "styled-components": "^5.2.1"
