@@ -27,6 +27,7 @@ CREATE TABLE images (
 );
 
 
+-- TOEDIT: instead of generating many promorecords, products should have a promoforeignkey
 CREATE TABLE promos (
   id SERIAL PRIMARY KEY,
   product_id INT,
@@ -58,7 +59,7 @@ CREATE TABLE ratings (
 COPY products FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/products.csv' DELIMITER ',' CSV HEADER;
 COPY promos FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/promos.csv' DELIMITER ',' CSV HEADER;
 COPY images FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/images.csv' DELIMITER ',' CSV HEADER;
--- COPY ratings FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/ratings.csv' DELIMITER ',' CSV HEADER;
+COPY ratings FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/ratings.csv' DELIMITER ',' CSV HEADER;
 
 
 
