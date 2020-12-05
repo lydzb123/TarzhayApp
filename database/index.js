@@ -1,32 +1,20 @@
-const config = require('../config.js');
 const mongoose = require('mongoose');
-const sampleProduct = require('./seeding/dummy-data.js');
 
-const db = mongoose.connect(config.MONGO_URI, {
+const db = mongoose.connect('mongodb://localhost/test', {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true
 })
-  .then(() => console.log('MongoDB connected!'))
+  .then(() => console.log('---MongoDB Connection Successful'))
   .catch(err => console.log(err));
 
-const ratingsSchema = new mongoose.Schema({
-  five_star: Number,
-  four_star: Number,
-  three_star: Number,
-  two_star: Number,
-  one_star: Number,
-});
-
-const promoSchema = new mongoose.Schema({
-  id: Number,
-  icon_img: String,
-  main_text: String,
-  sub_text: String,
-  link_text: String
-});
 
 const productSchema = new mongoose.Schema({
-  id: Number,
+  id: {
+    type: Number,
+    index: true,
+    unique: true
+  },
   name: String,
   brand: String,
   breadcrumbs: [String],
@@ -36,22 +24,24 @@ const productSchema = new mongoose.Schema({
   sale_end: Date,
   total_reviews: Number,
   total_questions: Number,
-  ratings_data: ratingsSchema,
-  promo_data: promoSchema
+  ratings_data: [{
+    one_star: Number,
+    two_star: Number,
+    three_star: Number,
+    four_star: Number,
+    five_star: Number
+  }],
+  promo_data: [{
+    promo_id: Number,
+    main_text: String,
+    sub_text: String,
+    link_text: String
+  }]
 });
 
-const userSchema = new mongoose.Schema({
-  id: Number,
-  username: String,
-  email: String,
-  saved_products: [Number]
-});
 
-const User = mongoose.model('user', userSchema);
-
+console.log('schema created');
 const Product = mongoose.model('product', productSchema);
+module.exports = {Product};
 
-module.exports = {
-  Product,
-  User
-};
+

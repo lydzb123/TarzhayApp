@@ -191,13 +191,6 @@ const seedUsers = () => {
     }
   });
 
-  // product.save((err, product) => {
-  //   if (err) return console.log(err)
-  //   else {
-  //     console.log('sampleProduct saved successfully');
-  //     mongoose.connection.close();
-  //   }
-  // });
 }
 
 mongoose.connect(config.MONGO_URI, {
@@ -211,11 +204,11 @@ Product.deleteMany({})
   .then(() =>{
     console.log('Product data deleted');
     seedProducts();
-    User.deleteMany({})
-    .then(() =>{
-      console.log('User data deleted');
-      seedUsers();
-    });
+    // User.deleteMany({})
+    // .then(() =>{
+    //   console.log('User data deleted');
+    //   seedUsers();
+    // });
   });
 
 

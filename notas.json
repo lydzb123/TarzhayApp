@@ -1,0 +1,68 @@
+// mongoimport -d mydb -c things --type json --file /Users/lydia/HR/test.json --jsonArray;
+
+// /Users/lydia/HR/hrsjo2-FEC-product-overview/output.json
+
+//run seed
+//create schema
+//run shell commands
+
+
+
+// const shell = require('shelljs')
+// shell.exec('./path_to_your_file')
+
+
+
+
+
+
+current shape of data
+// 20201201160311
+// http://localhost:3001/api/products/10
+
+GET data (matching product data w
+id, name, brand, price, discount, sale, reviews, questions, ratingdata, promodata, images, breadcrumbs)
+
+{
+  "breadcrumbs": [
+    "Target",
+    "Towelss",
+    "Soaps"
+  ],
+  "images": [
+    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/0.webp",
+    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/1.webp",
+    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/2.webp",
+    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/3.webp",
+    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/4.webp",
+    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/5.webp",
+    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/6.webp",
+    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/7.webp"
+  ],
+  "_id": "5fc6cfb3fc584aac51dc457f",
+  "id": 10,
+  "name": "Gorgeous Rubber Hat",
+  "brand": "Mayert, Stanton and Haag",
+  "price_reg": 513.35,
+  "price_discount": 18.32,
+  "sale_end": "2021-03-07T13:42:19.300Z",
+  "total_reviews": 66,
+  "total_questions": 4,
+  "ratings_data": {
+    "_id": "5fc6cfb3fc584aac51dc4580",
+    "five_star": 59,
+    "four_star": 39,
+    "three_star": 57,
+    "two_star": 86,
+    "one_star": 76
+  },
+  "promo_data": {
+    "_id": "5fc6cfb3fc584aac51dc4581",
+    "id": 3,
+    "icon_img": "http://placeimg.com/640/480",
+    "main_text": "Quasi est quae dolor incidunt unde.",
+    "sub_text": "Laborum aut ad facere.",
+    "link_text": "Learn More"
+  },
+  "__v": 0
+}

@@ -3,6 +3,7 @@ config.js
 /client/dist/hot
 notas.js
 
+*.csv
 products.csv
 promos.csv
 ratings.csv
