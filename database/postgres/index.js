@@ -94,48 +94,50 @@ const generateProducts = (headers, numberOfRecords, numberofPromos) => {
 
 
 
-const generateImages = (headers, numberOfRecords, numberOfProducts) => {
+const generateImages = (headers, numberOfProducts) => {
 
   const start = Date.now();
   console.log('Generating Images...');
 
+    var productIndex = 0;
 
-var photos = [
-    "https://placeimg.com/640/480/animals",
-    "https://placeimg.com/640/480/tech",
-    "https://placeimg.com/640/480/arch",
-    "https://placeimg.com/640/480/any",
-    "https://placeimg.com/640/480/people"
-  ];
+    for (let i = 0; i <100; i++) {
 
-    var index = 0;
-    for (let j = 0; j < 20; j++) {
+      for (let j = 0; j < numberOfProducts/100; j++) {
+        var images = "";
+        if (j === 0 && i===0) {
+          printTimestamp();
+          images += headers.join(',') + "\n";
+        }
 
-      var images = [];
+        var rows = [];
+        productIndex++;
+        var randomNumOfImages = random.number({ min: 3, max: 9});
 
-      if (j === 0) {
-        printTimestamp();
-        images.push(headers.join(','))
-      };
 
-      for (let i = 0; i < numberOfRecords/20; i++) {
         var row = [];
-        index++;
-        row.push(index);
-        row.push(random.number({ min: 1, max: numberOfProducts}));
-        row.push(photos[random.number({ min: 0, max: photos.length-1})]);
-        row = row.join(',');
-        images.push(row);
-      };
+        var urls = [];
+        for(let k = 0; k < randomNumOfImages; k++) {
+          urls.push(`https://sdcproducts.s3-us-west-1.amazonaws.com/product_${random.number({ min: 1, max: 1000})}.jpg`);
+          if (k === randomNumOfImages-1) {
+            row.push(productIndex);
+            row.push(productIndex);
+            row = row.join(',') + ',"{' + urls.join(',') + '}"';
+            rows.push(row);
+            row = [];
+            urls = [];
+          }
+        };
 
-      images = images.join("\n") + "\n";
-      fs.writeFileSync( 'images.csv', images, { flag: 'a+' });
-      console.log('entries: ', index, '| time: ', (Date.now() - start) /1000);
+        images += rows.join("\n") + "\n";
+        fs.writeFileSync( 'images.csv', images, { flag: 'a+' });
 
-      if (j === 19) {
-        printTimestamp();
-        console.log('-----------------------------');
-      };
+        if (j === 99) {
+          printTimestamp();
+          console.log('-----------------------------');
+        };
+      }
+      console.log('entries: ', productIndex, '| time: ', (Date.now() - start) /1000);
     };
 
 };
@@ -197,6 +199,6 @@ generatePromos(["id", "main_text", "sub_text", "link_text"], 5000);
 
 generateProducts(["id", "name", "brand", "breadcrumbs", "price_reg", "price_discount", "sale_end", "total_reviews", "total_questions", "promo_id"], 10000000, 5000);
 
-generateImages(["id", "product_id", "photo_url"], 30000000, 10000000);
+generateImages(["id", "product_id", "photo_urls"], 10000000);
 
 generateRatings(["id", "product_id", "five_star_count", "four_star_count", "three_star_count", "two_star_count", "one_star_count"], 10000000);

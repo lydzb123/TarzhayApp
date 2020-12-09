@@ -35,23 +35,24 @@ const seedData = () => {
         "link_text": "Learn More"
       }]`;
 
-      var photos = [
-      `["https://placeimg.com/640/480/animals",
-        "https://placeimg.com/640/480/tech",
-        "https://placeimg.com/640/480/arch",
-        "https://placeimg.com/640/480/any",
-        "https://placeimg.com/640/480/people"
-      ]`,
-     `["https://placeimg.com/640/480/arch",
-       "https://placeimg.com/640/480/any",
-       "https://placeimg.com/640/480/tech"]`];
+
+      var randomCount = random.number({ min: 3, max: 8});
+      var photos = [];
+
+      for (let i = 0; i <randomCount; ++i) {
+        var imgIndex = random.number({ min: 1, max: 519});
+        var imgUrl = `https://sdcproducts.s3-us-west-1.amazonaws.com/product_${imgIndex}.jpg`;
+        photos.push(imgUrl);
+      }
+      var photos = JSON.stringify(photos);
+
 
       var product = `{
         "id": ${index},
         "name": "${faker.commerce.productName()}",
         "brand": "${company.companyName()}",
         "breadcrumbs": ["Target", "${faker.commerce.product()}s", "${faker.commerce.product()}s"],
-        "images": ${photos[random.number({ min: 0, max: 1})]},
+        "images": ${photos},
         "price_reg": ${random.number({ min: 100.01, max: 1000, precision: 0.01})},
         "price_discount": ${random.number({ min: 1, max: 100, precision: 0.01})},
         "sale_end": "${date.future()}",

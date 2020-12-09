@@ -30,16 +30,18 @@ CREATE TABLE products (
   );
 
 
+
 CREATE TABLE images (
   id SERIAL PRIMARY KEY,
   product_id INT,
-  photo_url VARCHAR,
+  photo_urls text[],
 
   CONSTRAINT fk_product
     FOREIGN KEY(product_id)
       REFERENCES products(id)
 );
 
+CREATE INDEX image_index ON images (product_id);
 
 
 CREATE TABLE ratings (
@@ -55,6 +57,9 @@ CREATE TABLE ratings (
     FOREIGN KEY(product_id)
       REFERENCES products(id)
 );
+
+CREATE INDEX rating_index ON ratings (product_id);
+
 
 SELECT CURRENT_TIMESTAMP;
 COPY promos
