@@ -3,6 +3,9 @@ var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
 var webpack = require('webpack');
 
+
+
+
 module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
   output: {
@@ -14,6 +17,10 @@ module.exports = {
   devServer: {
     contentBase: DIST_DIR
   },
+
+  externals: {
+    newrelic: 'newrelic'
+    },
 
   module: {
     rules: [
@@ -37,3 +44,5 @@ module.exports = {
     historyApiFallback: true
   }
 };
+
+

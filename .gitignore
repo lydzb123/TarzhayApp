@@ -4,7 +4,5 @@ config.js
 notas.js
 
 *.csv
-products.csv
-promos.csv
-ratings.csv
-images.csv
+*.json
+queries.sql

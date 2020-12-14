@@ -1,68 +1,32 @@
-// mongoimport -d mydb -c things --type json --file /Users/lydia/HR/test.json --jsonArray;
+lydzb123:hrsjo2-FEC-product-overview lydia$ k6 run /Users/lydia/HR/hrsjo2-FEC-product-overview/__tests__/k6/postgresk6.js
 
-// /Users/lydia/HR/hrsjo2-FEC-product-overview/output.json
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
 
-//run seed
-//create schema
-//run shell commands
+  execution: local
+     script: /Users/lydia/HR/hrsjo2-FEC-product-overview/__tests__/k6/postgresk6.js
+     output: -
 
-
-
-// const shell = require('shelljs')
-// shell.exec('./path_to_your_file')
-
-
-
-
+  scenarios: (100.00%) 1 scenario, 500 max VUs, 1m50s max duration (incl. graceful stop):
+           * default: Up to 500 looping VUs for 1m20s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
 
 
-current shape of data
-// 20201201160311
-// http://localhost:3001/api/products/10
+                                                                                                                   running (1m20.1s), 000/500 VUs, 25497 complete and 0 interrupted iterations                                        default ✓ [======================================] 000/500 VUs  1m20s
 
-GET data (matching product data w
-id, name, brand, price, discount, sale, reviews, questions, ratingdata, promodata, images, breadcrumbs)
-
-{
-  "breadcrumbs": [
-    "Target",
-    "Towelss",
-    "Soaps"
-  ],
-  "images": [
-    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/0.webp",
-    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/1.webp",
-    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/2.webp",
-    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/3.webp",
-    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/4.webp",
-    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/5.webp",
-    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/6.webp",
-    "https://fec-mock-product-images.s3-us-west-1.amazonaws.com/FEC-images/jenga/7.webp"
-  ],
-  "_id": "5fc6cfb3fc584aac51dc457f",
-  "id": 10,
-  "name": "Gorgeous Rubber Hat",
-  "brand": "Mayert, Stanton and Haag",
-  "price_reg": 513.35,
-  "price_discount": 18.32,
-  "sale_end": "2021-03-07T13:42:19.300Z",
-  "total_reviews": 66,
-  "total_questions": 4,
-  "ratings_data": {
-    "_id": "5fc6cfb3fc584aac51dc4580",
-    "five_star": 59,
-    "four_star": 39,
-    "three_star": 57,
-    "two_star": 86,
-    "one_star": 76
-  },
-  "promo_data": {
-    "_id": "5fc6cfb3fc584aac51dc4581",
-    "id": 3,
-    "icon_img": "http://placeimg.com/640/480",
-    "main_text": "Quasi est quae dolor incidunt unde.",
-    "sub_text": "Laborum aut ad facere.",
-    "link_text": "Learn More"
-  },
-  "__v": 0
-}
+    data_received..............: 30 MB  369 kB/s
+    data_sent..................: 2.5 MB 32 kB/s
+    http_req_blocked...........: avg=19.03µs  min=2µs    med=4µs      max=59.47ms p(90)=7µs   p(95)=13µs
+    http_req_connecting........: avg=10.33µs  min=0s     med=0s       max=45.4ms  p(90)=0s    p(95)=0s
+    http_req_duration..........: avg=871.1ms  min=2.64ms med=749.54ms max=4.62s   p(90)=1.82s p(95)=2.47s
+    http_req_receiving.........: avg=96.71µs  min=27µs   med=88µs     max=19.87ms p(90)=125µs p(95)=141µs
+    http_req_sending...........: avg=28.11µs  min=8µs    med=23µs     max=14.76ms p(90)=37µs  p(95)=49µs
+    http_req_tls_handshaking...: avg=0s       min=0s     med=0s       max=0s      p(90)=0s    p(95)=0s
+    http_req_waiting...........: avg=870.97ms min=2.56ms med=749.44ms max=4.62s   p(90)=1.82s p(95)=2.47s
+    http_reqs..................: 25497  318.509506/s
+    iteration_duration.........: avg=871.24ms min=2.75ms med=749.8ms  max=4.62s   p(90)=1.82s p(95)=2.47s
+    iterations.................: 25497  318.509506/s
+    vus........................: 1      min=1   max=500
+    vus_max....................: 500    min=500 max=500

@@ -9,24 +9,31 @@ import Navbar from './components/Navbar/Navbar.jsx'
 import DeliveryCards from './components/DeliveryCards/DeliveryCards.jsx';
 import axios from 'axios';
 
+
+
 const App = () => {
   const [productData, setProductData] = useState();
   const [carousel, setCarousel] = useState(false);
 
   useEffect(() => {
     getProductData();
+
   }, []);
 
   const getProductData = () => {
     const { href } = window.location;
     const id = href.substring(href.lastIndexOf('/') + 1);
 
-    axios.get(`/api/products/${id || 0}`)
+
+    axios.get(`/api/products/${id || 1}`)
       .then(({data}) => {
         // Pushes '' to render extra thumbnail for adding user photos
-        data.images.push('');
+        data.photo_urls.push('');
         setProductData(data);
-      });
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   const toggleCarousel = () => {
@@ -43,7 +50,7 @@ const App = () => {
             <ProductHeader productData={productData} />
             <Row>
               <ProductImagesViewer
-                images={productData.images}
+                images={productData.photo_urls}
                 toggleCarousel={toggleCarousel}
               />
               <ProductInfo productData={productData} />
@@ -54,7 +61,7 @@ const App = () => {
       {
         (carousel && productData) &&
           <CarouselModal
-            images={productData.images}
+            images={productData.photo_urls}
             toggleCarousel={toggleCarousel}
           />
       }

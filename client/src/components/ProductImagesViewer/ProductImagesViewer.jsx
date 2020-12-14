@@ -19,6 +19,7 @@ const ProductImagesViewer = ({images, toggleCarousel}) => {
 
   const changeImageIndex = (i) => {
     setImageIndex(i);
+
   }
 
   const moveLens = (e) => {

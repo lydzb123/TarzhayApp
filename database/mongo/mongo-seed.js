@@ -40,7 +40,7 @@ const seedData = () => {
       var photos = [];
 
       for (let i = 0; i <randomCount; ++i) {
-        var imgIndex = random.number({ min: 1, max: 519});
+        var imgIndex = random.number({ min: 1, max: 1000});
         var imgUrl = `https://sdcproducts.s3-us-west-1.amazonaws.com/product_${imgIndex}.jpg`;
         photos.push(imgUrl);
       }
@@ -78,3 +78,6 @@ const seedData = () => {
 
 seedData();
 
+db.products.explain().find({id: 10})
+db.products.createIndex({ id: 1 })
+db.products.find({id:1}).stats()

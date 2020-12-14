@@ -13,8 +13,7 @@ const db = mongoose.connect(config.MONGO_URI, {
 const productSchema = new mongoose.Schema({
   id: {
     type: Number,
-    index: true,
-    unique: true
+    index: {unique: true}
   },
   name: String,
   brand: String,
@@ -46,4 +45,3 @@ const Product = mongoose.model('product', productSchema);
 module.exports = {Product};
 
 mongoose.connection.close();
-
