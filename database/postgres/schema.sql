@@ -63,22 +63,22 @@ CREATE INDEX rating_index ON ratings (product_id);
 
 SELECT CURRENT_TIMESTAMP;
 COPY promos
-FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/promos.csv'
+FROM '/tmp/promos.csv'
 DELIMITER ',' CSV HEADER;
 
 SELECT CURRENT_TIMESTAMP;
 COPY products
-FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/products.csv'
+FROM '/tmp/products.csv'
 DELIMITER ',' CSV HEADER;
 
 SELECT CURRENT_TIMESTAMP;
 COPY images
-FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/images.csv'
+FROM '/tmp/images.csv'
 DELIMITER ',' CSV HEADER;
 
 SELECT CURRENT_TIMESTAMP;
 COPY ratings
-FROM '/Users/lydia/HR/hrsjo2-FEC-product-overview/ratings.csv'
+FROM '/tmp/ratings.csv'
 DELIMITER ',' CSV HEADER;
 
 SELECT CURRENT_TIMESTAMP;

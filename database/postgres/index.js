@@ -56,7 +56,7 @@ const generateProducts = (headers, numberOfRecords, numberofPromos) => {
   console.log('Generating Products...');
 
   var index = 0;
-  for (let j = 0; j < 20; j++) {
+  for (let j = 0; j < 100; j++) {
     var productCatalog = [];
 
     if (j === 0) {
@@ -64,7 +64,7 @@ const generateProducts = (headers, numberOfRecords, numberofPromos) => {
       productCatalog.push(headers.join(','))
     };
 
-    for (let i = 0; i < numberOfRecords/20; i++) {
+    for (let i = 0; i < numberOfRecords/100; i++) {
       var row = [];
       index++;
       row.push(index);
@@ -84,7 +84,7 @@ const generateProducts = (headers, numberOfRecords, numberofPromos) => {
     productCatalog = productCatalog.join("\n") + "\n";
     fs.writeFileSync( 'products.csv', productCatalog, { flag: 'a+' });
     console.log('entries: ', index, '| time: ', (Date.now() - start) /1000);
-    if(j === 19) {
+    if(j === 99) {
       printTimestamp();
       console.log('-----------------------------');
     };
