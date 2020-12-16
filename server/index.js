@@ -11,10 +11,7 @@ express // the module instance
 );
 
 
-
 const app = express();
-
-
 const compression = require('compression');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -23,11 +20,7 @@ const cors = require("cors");
 const pool = require('../database/db.js');
 
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3001;
-};
-
+let port = process.env.PORT || 3001;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
@@ -70,7 +63,8 @@ app.get("/api/products/:id", async (req, res) =>  {
     const productData = await pool
       .query(query)
       .then(productData => res.send(productData.rows[0]))
-      .catch(err => res.status(500).send(err.stack))
+      .catch(err => {console.log('----------------', err);
+	   res.status(500).send(err.stack)})
 
   });
 

@@ -1,14 +1,13 @@
 const {Pool} = require('pg');
 
-
-
 const pool = new Pool({
-  host: 'localhost',
-  user: 'lydia',
-  password: 'SqlSdcPass!1',
+  host: 'ec2-54-183-162-130.us-west-1.compute.amazonaws.com',
+  user: 'postgres',
+  password: 'password',
   database: 'sdc',
+  port: '5432',
   max: 25,
-  idleTimeoutMillis: 1000
+  idleTimeoutMillis: 5000
 });
 
 
