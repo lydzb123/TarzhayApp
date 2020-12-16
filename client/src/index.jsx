@@ -24,8 +24,8 @@ const App = () => {
     const { href } = window.location;
     const id = href.substring(href.lastIndexOf('/') + 1);
 
-
-    axios.get(`/api/products/${id || 1}`)
+    var url = window.location.pathname.replace(/\//g, '') || 1;
+    axios.get(`/api/products/${url}`)
       .then(({data}) => {
         // Pushes '' to render extra thumbnail for adding user photos
         data.photo_urls.push('');
